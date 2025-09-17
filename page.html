@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Chart.js</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body id="segundo">
+        <h1>Gráfico de barras</h1>
+        <p>En este gráfico de barras encontrarás la cantidad de habitantes por región de Chile. <a href="https://es.wikipedia.org/wiki/Anexo:Regiones_de_Chile_por_poblaci%C3%B3n" target="_blank" class=otro>Aquí puedes encontrar más info</a>, y aprentando <a href='index.html' class=otro>aquí</a> puedes volver a la otra página.</p>
+        <canvas id="aqui"></canvas>
+        <h1>Gráfico de líneas</h1>
+        <p>Ahora vamos a comparar el crecimiento de las 2 regiones con mayor cantidad de habitantes</p>
+        <canvas id="alla"></canvas>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById('myChart');
+            new Chart("aqui", {
+    type: 'bar',
+    data: {
+      labels: ['Metropolitana', 'Valparaíso', 'Biobío', 'Maule', 'La Araucanía', 'Atacama'],
+      datasets: [{
+        label: '# de habitantes por región',
+        data: [7400741, 1896053, 1613059, 1123008, 938626, 263924],
+        backgroundColor: [
+      'rgba(195, 211, 80, 0.5)',
+      'rgba(96, 88, 86, 0.5)',
+      'rgba(28, 110, 140, 0.5)',
+
+    ],
+        borderColor: [
+      'rgb(195, 211, 80)',
+      'rgb(96, 88, 86)',
+      'rgb(28, 110, 140)',
+
+    ],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      plugins: {
+      legend: {
+      labels: {
+          color: '#C3D350',
+        }
+      }
+    },
+      scales: {
+          x: {
+            position: 'bottom',
+            // color/estilo de las líneas de la rejilla (lineas verticales)
+            grid: {
+              color: 'rgba(195, 211, 80,0.3)',   // color de las líneas de la grilla
+              borderColor: 'rgba(195, 211, 80,1)', // color de la línea del eje (border)
+              lineWidth: 1.5
+            },
+            // color de las etiquetas (números) del eje X
+            ticks: {
+              color: '#84A07C' 
+            },
+        },
+        y: {
+            // color/estilo de las líneas de la rejilla (lineas horizontales)
+            grid: {
+              color: 'rgba(195, 211, 80,0.3)',
+              borderColor: 'rgbargba(195, 211, 80,1)',
+              lineWidth: 1.5
+            },
+            ticks: {
+              color: '#84A07C'
+            },
+
+          beginAtZero: true
+        },
+        
+      }
+    }
+  });
+
+        </script>
+
+        <script>
+            
+            new Chart("alla", { /*seria muy interesante como acá estoy comparando, poner ambos gráficos a la misma altura para que ambos ocupen una mitad de la pantalla y la info pueda verse más fácil*/
+    type: 'line',
+    data: {
+      labels: ['2000', '2005', '2010', '2015', '2020', '2025'],
+      datasets: [{
+        label: 'Metropolitana',
+        data: [6171283, 6538896, 6883563, 7193719, 7460708, 7400741],
+        borderWidth: 3,
+        borderColor:'#84A07C',
+        pointBackgroundColor: '#84A07C',
+        pointRadius: 6,
+        },
+
+        { 
+        label: 'Valparaíso',
+        data: [1562413, 1662708, 1759167, 1850676, 1934895, 1896053],
+        borderWidth: 3,
+        borderColor:'#C3D350',
+        pointBackgroundColor: '#C3D350',
+        pointRadius: 6,
+      }],
+      
+        
+    },
+    options: {
+      animation: true,
+      plugins: {
+      legend: {
+      labels: {
+          color: '#C3D350',
+        }
+      }
+    },
+      scales: {
+          x: {
+            position: 'bottom',
+            // color/estilo de las líneas de la rejilla (lineas verticales)
+            grid: {
+              color: 'rgba(195, 211, 80,0.3)',   // color de las líneas de la grilla
+              borderColor: 'rgba(195, 211, 80,1)', // color de la línea del eje (border)
+              lineWidth: 1.5
+            },
+            // color de las etiquetas (números) del eje X
+            ticks: {
+              color: '#84A07C' 
+            },
+        },
+        y: {
+            // color/estilo de las líneas de la rejilla (lineas horizontales)
+            grid: {
+              color: 'rgba(195, 211, 80,0.3)',
+              borderColor: 'rgbargba(195, 211, 80,1)',
+              lineWidth: 1.5
+            },
+            ticks: {
+              color: '#84A07C'
+            },
+
+          beginAtZero: true
+        },
+      }
+    }
+  });
+        </script>
+    </body>
+</html>
